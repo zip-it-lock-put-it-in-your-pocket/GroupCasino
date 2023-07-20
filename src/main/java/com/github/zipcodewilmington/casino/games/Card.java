@@ -2,9 +2,9 @@ package com.github.zipcodewilmington.casino.games;
 
 public class Card {
     String face;
-    int value;
-    String color;
-    String suit;
+   public int value;
+   public String color;
+  public  String suit;
 
     public Card(String face, int value, String Color, String suit)
     {
