@@ -13,7 +13,7 @@ public class CasinoWar {
         static void playCasinoWar() {
             Scanner scanner = new Scanner(System.in);
 
-            // Change to call deck
+        // Change to call deck
             List<String> deck = createShuffledDeck();
 
             int playerScore = 0;
@@ -73,6 +73,7 @@ public class CasinoWar {
                     }
                 }
 
+
                 // Display the current scores
                 System.out.println("Your score: " + playerScore);
                 System.out.println("Dealer's score: " + dealerScore);
@@ -108,6 +109,7 @@ public class CasinoWar {
                     deck.add(rank + " of " + suit);
                 }
             }
+
 
             Collections.shuffle(deck);
             return deck;
