@@ -4,10 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by leon on 7/21/2020.
@@ -30,14 +27,11 @@ public class CasinoAccountManager extends CasinoAccount{
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry) it.next();
             acc = (CasinoAccount) pair.getValue();
-            if (data.containsKey(accountName) && accountPassword == acc.getAccountPassword()) {
-
-                break;
-            }
-            else if (!data.containsKey(accountName) && accountPassword == acc.getAccountPassword()){
-                acc=null;
+            if (!data.containsKey(accountName) || !Objects.equals(accountPassword, acc.getAccountPassword())) {
+                acc = null;
 
             }
+            break;
         }
         return acc;
     }
