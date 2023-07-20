@@ -21,8 +21,6 @@ public class Casino implements Runnable {
     public void run() {
         CasinoAccountManager.addAllAccounts();
 
-        //new CasinoAccount("Santos","123" , 1000));
-
         String arcadeDashBoardInput;
         CasinoAccountManager casinoAccountManager = new CasinoAccountManager();
         do {
@@ -33,6 +31,7 @@ public class Casino implements Runnable {
 
                 CasinoAccount casinoAccount = casinoAccountManager.getAccount(accountName, accountPassword);
                 boolean isValidLogin = casinoAccount != null;
+
                 if (isValidLogin) {
                     String gameSelectionInput = getGameSelectionInput().toUpperCase();
                     if (gameSelectionInput.equals("SLOTS")) {
