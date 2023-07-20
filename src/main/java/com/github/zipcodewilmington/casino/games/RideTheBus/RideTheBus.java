@@ -1,14 +1,15 @@
-package com.github.zipcodewilmington.casino.games;
+package com.github.zipcodewilmington.casino.games.RideTheBus;
+
+import com.github.zipcodewilmington.casino.games.Card;
+import com.github.zipcodewilmington.casino.games.Deck;
+
 import java.util.Scanner;
 
 public class RideTheBus {
 
     Deck deckobj = new Deck();
-
     Card[]table = new Card[4];
-
     int index0;
-
     Scanner scan = new Scanner(System.in);
 
 
