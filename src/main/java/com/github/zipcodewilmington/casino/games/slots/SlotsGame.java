@@ -19,7 +19,8 @@ public class SlotsGame  {
     String wordthree="";
 
     boolean hit = false;
-    String[]Words = {"APPLE","PEAR","PEACH","ORANGE","WATERMELON","APPLE","STRAWBERRY","KIWI","RASBERRY","BLUEBERRY"};
+    //String[]Words = {"APPLE","APPLE","APPLE","APPLE","APPLE","APPLE","APPLE","APPLE","APPLE","APPLE"};
+    String[]Words = {"APPLE","PEAR","PEACH","ORANGE","WATERMELON","BLACKBERRY","STRAWBERRY","KIWI","RAZBERRY","BLUEBERRY"};
 
     SlotsPlayer slotsPlayer;
 
@@ -60,6 +61,8 @@ public class SlotsGame  {
             if(ret.equals("yes")||ret.equals("y"))
             {
                 slotsPlayer.setWallet(slotsPlayer.CurrentBet);
+                retr.setCasinoBalance(retr.getCasinoBalance()+slotsPlayer.getWallet());
+                slotsPlayer.resetBet();
                 run();
             }
            else if(ret.equals("no")||ret.equals("n"))
