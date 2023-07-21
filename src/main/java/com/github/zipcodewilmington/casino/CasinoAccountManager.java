@@ -21,18 +21,23 @@ public class CasinoAccountManager extends CasinoAccount{
 
     public CasinoAccount getAccount(String accountName, String accountPassword) {
 
-
+        boolean end=false;
         Iterator it = data.entrySet().iterator();
         CasinoAccount acc = null;
-        while (it.hasNext()) {
-            Map.Entry pair = (Map.Entry) it.next();
-            acc = (CasinoAccount) pair.getValue();
-            if (!data.containsKey(accountName) || !Objects.equals(accountPassword, acc.getAccountPassword())) {
-                acc = null;
+       // acc=data.get(accountName);
 
-            }
-            break;
+            while (it.hasNext()&& !end) {
+                Map.Entry pair = (Map.Entry) it.next();
+                acc = (CasinoAccount) pair.getValue();
+                if (Objects.equals(acc.getName(), accountName) && Objects.equals(acc.getAccountPassword(), accountPassword)) {
+                    end = true;
+                }
+                else{
+                    acc=null;
+                }
+
         }
+
         return acc;
     }
 
@@ -85,7 +90,9 @@ public class CasinoAccountManager extends CasinoAccount{
     }
     public static void addAllAccounts(){
         data.put("Santos",new CasinoAccount("Santos","123" , 1000));
-        data.put("Ricky",new CasinoAccount("Rick","0000" , 1000));
+
+        
+
         try {
             Scanner fileIn = new Scanner(new File("src/main/java/com/github/zipcodewilmington/casino/Accounts.txt"));
 
