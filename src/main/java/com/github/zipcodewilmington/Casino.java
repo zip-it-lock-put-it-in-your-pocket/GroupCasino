@@ -4,6 +4,7 @@ import com.github.zipcodewilmington.casino.CasinoAccount;
 import com.github.zipcodewilmington.casino.CasinoAccountManager;
 import com.github.zipcodewilmington.casino.GameInterface;
 import com.github.zipcodewilmington.casino.PlayerInterface;
+import com.github.zipcodewilmington.casino.games.RideTheBus.RideTheBusGame;
 import com.github.zipcodewilmington.casino.games.numberguess.NumberGuessGame;
 import com.github.zipcodewilmington.casino.games.numberguess.NumberGuessPlayer;
 import com.github.zipcodewilmington.casino.games.slots.SlotsGame;
@@ -35,9 +36,16 @@ public class Casino implements Runnable {
                 if (isValidLogin) {
                     String gameSelectionInput = getGameSelectionInput().toUpperCase();
                     if (gameSelectionInput.equals("SLOTS")) {
-                        play(new SlotsGame(), new SlotsPlayer());
-                    } else if (gameSelectionInput.equals("NUMBERGUESS")) {
-                        play(new NumberGuessGame(), new NumberGuessPlayer());
+                        SlotsGame slots = new SlotsGame(casinoAccount);
+                        try {
+                            slots.run();
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                    } else if (gameSelectionInput.equals("RIDETHEBUS")) {
+                        RideTheBusGame ride = new RideTheBusGame();
+                        ride.start();
+
                     } else {
                         // TODO - implement better exception handling
                         String errorMessage = "[ %s ] is an invalid game selection";
@@ -71,11 +79,11 @@ public class Casino implements Runnable {
         return console.getStringInput(new StringBuilder()
                 .append("Welcome to the Game Selection Dashboard!")
                 .append("\nFrom here, you can select any of the following options:")
-                .append("\n\t[ SLOTS ], [ NUMBERGUESS ]")
+                .append("\n\t[ SLOTS ], [ RIDETHEBUS ]")
                 .toString());
     }
 
-    private void play(Object gameObject, Object playerObject) {
+    private void play(Object gameObject, Object playerObject) throws InterruptedException {
         GameInterface game = (GameInterface)gameObject;
         PlayerInterface player = (PlayerInterface)playerObject;
         game.add(player);

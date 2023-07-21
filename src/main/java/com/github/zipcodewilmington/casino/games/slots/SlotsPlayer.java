@@ -1,15 +1,18 @@
 package com.github.zipcodewilmington.casino.games.slots;
 
+import com.github.zipcodewilmington.casino.CasinoAccount;
+
 /**
  * Created by leon on 7/21/2020.
  */
 public class SlotsPlayer {
 
     int CurrentBet = 0;
-    int wallet = 10000;
+    int wallet;
     boolean active = true;
 
-    public SlotsPlayer() {
+    public SlotsPlayer(CasinoAccount f) {
+        this.wallet = (int) f.getCasinoBalance();
     }
 
     public void placeBet(int bet) {

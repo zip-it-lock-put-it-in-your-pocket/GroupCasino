@@ -8,6 +8,10 @@ import com.github.zipcodewilmington.utils.IOConsole;
 import java.util.Scanner;
 
 public class RideTheBusGame {
+    public RideTheBusPlayer getRider() {
+        return rider;
+    }
+
     RideTheBusPlayer rider;
     Deck deckobj = new Deck();
     Card[] table = new Card[4];
@@ -239,7 +243,7 @@ public class RideTheBusGame {
     }
     public void status()
     {
-    System.out.println("You are currently at card position " + (index0+1) + "with a bet balance of " + rider.getCurrentBet());
+    System.out.println("You are currently at card position " + (index0+1) + " with a bet balance of " + rider.getCurrentBet());
     }
 
 
