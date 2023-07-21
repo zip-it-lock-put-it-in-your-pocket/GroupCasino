@@ -6,9 +6,8 @@ import java.util.Scanner;
 
 public class CasinoWar {
 
-        public static void main(String[] args) {
-            playCasinoWar();
-        }
+
+
 
         static void playCasinoWar() {
             Scanner scanner = new Scanner(System.in);

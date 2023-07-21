@@ -3,13 +3,12 @@ package com.github.zipcodewilmington.casino.games.slots;
 import com.github.zipcodewilmington.casino.CasinoAccount;
 import com.github.zipcodewilmington.casino.GameInterface;
 import com.github.zipcodewilmington.casino.PlayerInterface;
-import com.github.zipcodewilmington.casino.games.RideTheBus.RideTheBusPlayer;
 import com.github.zipcodewilmington.utils.AnsiColor;
 import com.github.zipcodewilmington.utils.IOConsole;
 
 import java.util.Random;
 import java.util.Scanner;
-public class SlotsGame {
+public class SlotsGame  {
     static Random rand = new Random();
     static Scanner scan = new Scanner(System.in);
 
@@ -62,7 +61,7 @@ public class SlotsGame {
             String ret = scan.nextLine().toLowerCase();
             if(ret.equals("yes")||ret.equals("y"))
             {
-                slotsPlayer.setWallet(slotsPlayer.wallet+ slotsPlayer.CurrentBet);
+
                 run();
             }
            else if(ret=="no"||ret=="n")
@@ -134,16 +133,20 @@ public class SlotsGame {
 
     public void assignWords()
     {
+        wordone = "";
+        wordtwo = "";
+        wordthree= "";
         String ret="";
         String ret2="";
         String ret3="";
         for(int i=0;i<3;i++)
         {
             int index = rand.nextInt(10);
-            ret="      " + Words[index];
+
             if(i==0)
             {
                 wordone=Words[index];
+                ret="      " + Words[index];
             }
             else if(i==1)
             {
@@ -210,15 +213,15 @@ public class SlotsGame {
         {
             slotsPlayer.placeBet(slotsPlayer.CurrentBet*3);
             System.out.println("Congratulations! You hit big!!!!");
-            System.out.println("You have trippled your current bet!");
-            System.out.println("Your balance is now " + slotsPlayer.CurrentBet);
+            System.out.println("You have tripled your current bet!");
+            System.out.println("Your current bet is now " + slotsPlayer.CurrentBet);
         }
         else if (didWin==false)
         {
            slotsPlayer.placeBet((int) (slotsPlayer.CurrentBet - slotsPlayer.CurrentBet*.10));
            System.out.println("Sorry. You didn't hit the jackpot this time.");
            System.out.println("Your current bet has been decreased by 10%");
-           System.out.println("Your balance is now " + slotsPlayer.CurrentBet);
+           System.out.println("Your current bet is now " + slotsPlayer.CurrentBet);
         }
     }
     public boolean didWin() throws InterruptedException {
@@ -238,7 +241,5 @@ public class SlotsGame {
 
 
 
-
-
-    }
+}
 
