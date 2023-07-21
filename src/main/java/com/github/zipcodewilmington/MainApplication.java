@@ -1,11 +1,12 @@
 package com.github.zipcodewilmington;
 
 import com.github.zipcodewilmington.casino.games.RideTheBus.RideTheBusGame;
+import com.github.zipcodewilmington.casino.games.slots.SlotsGame;
 
 public class MainApplication {
-    public static void main(String[] args) {
-        RideTheBusGame run = new RideTheBusGame();
-        run.start();
+    public static void main(String[] args) throws InterruptedException {
+        SlotsGame game = new SlotsGame();
+        game.run();
 
 
     }
