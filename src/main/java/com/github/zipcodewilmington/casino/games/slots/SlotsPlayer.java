@@ -46,6 +46,10 @@ public class SlotsPlayer {
         active = true;
     }
 
+    public void setnotActive()
+    {
+        active = false;
+    }
 
         public int getWallet()
 

@@ -1,13 +1,15 @@
 package com.github.zipcodewilmington.casino.games.RideTheBus;
 
+import com.github.zipcodewilmington.casino.CasinoAccount;
+
 public class RideTheBusPlayer {
 
 
     double wallet =0;
     int currentBet=0;
-    public RideTheBusPlayer()
+    public RideTheBusPlayer(CasinoAccount person)
     {
-        this.wallet = 10000;
+        this.wallet = person.getCasinoBalance();
     }
 
 

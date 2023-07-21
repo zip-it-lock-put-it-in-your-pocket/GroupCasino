@@ -1,6 +1,8 @@
 package com.github.zipcodewilmington.casino.games.RideTheBus;
 
+import com.github.zipcodewilmington.casino.CasinoAccount;
 import com.github.zipcodewilmington.casino.GameInterface;
+import com.github.zipcodewilmington.casino.PlayerInterface;
 import com.github.zipcodewilmington.casino.games.Card;
 import com.github.zipcodewilmington.casino.games.Deck;
 import com.github.zipcodewilmington.utils.AnsiColor;
@@ -8,16 +10,22 @@ import com.github.zipcodewilmington.utils.IOConsole;
 
 import java.util.Scanner;
 
-public class RideTheBusGame {
+public class RideTheBusGame implements GameInterface {
     public RideTheBusPlayer getRider() {
         return rider;
     }
-
+    CasinoAccount f;
     RideTheBusPlayer rider;
     Deck deckobj = new Deck();
     Card[] table = new Card[4];
     int index0;
     Scanner scan = new Scanner(System.in);
+
+public RideTheBusGame(CasinoAccount person)
+{
+    f = person;
+}
+
 
     public void hop() {
         index0 = index0 + 1;
@@ -50,7 +58,8 @@ public class RideTheBusGame {
     }
 
     public void start() {
-        rider = new RideTheBusPlayer();
+
+        rider = new RideTheBusPlayer(f);
         WelcomeMessage();
         while (!checkbet(getBet()))
         {}
@@ -96,6 +105,7 @@ public class RideTheBusGame {
     public int getBet()
     {
       System.out.println("How much would you like to bet in this game?");
+      System.out.println("Your account has: " + rider.getWallet());
 
           int b= scan.nextInt();
 
@@ -248,4 +258,18 @@ public class RideTheBusGame {
     }
 
 
+    @Override
+    public void add(PlayerInterface player) {
+
+    }
+
+    @Override
+    public void remove(PlayerInterface player) {
+
+    }
+
+    @Override
+    public void run() {
+
+    }
 }

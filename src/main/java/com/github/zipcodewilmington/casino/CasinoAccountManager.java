@@ -121,10 +121,8 @@ public class CasinoAccountManager extends CasinoAccount{
         //adds account to properties
         try {
 
-            // create new BufferedWriter for the output file
-            bf = new BufferedWriter(new FileWriter(file));
 
-            // iterate map entries
+            bf = new BufferedWriter(new FileWriter(file));
             for (Map.Entry<String, CasinoAccount> entry : data.entrySet()) {
                 // put key and value separated by a colon
                 bf.write(entry.getKey() + "," + entry.getValue().getName()+","+entry.getValue().getAccountPassword()+","+entry.getValue().getCasinoBalance());
