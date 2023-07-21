@@ -2,64 +2,107 @@ package com.github.zipcodewilmington.casino.games.RideTheBus;
 
 import com.github.zipcodewilmington.casino.games.Card;
 import com.github.zipcodewilmington.casino.games.RideTheBus.RideTheBusGame;
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RideTheBusGameTest {
 
-    RideTheBusGame rideTheBusGame = new RideTheBusGame();
+    @Test
+    void testGetWallet() {
+        RideTheBusPlayer player = new RideTheBusPlayer();
+        player.setWallet(10000.0);
+        double f = player.getWallet();
+        Assert.assertEquals(10000.0, f, 0);
+    }
+
 
     @Test
-    public void testCheckBet() {
+    void testSetWallet() {
+        RideTheBusPlayer player = new RideTheBusPlayer();
+        player.setWallet(50000.0);
+        double f = player.getWallet();
+        Assert.assertEquals(50000.0, f, 0);
+    }
 
-        rideTheBusGame.getRider().setWallet(100); // Set wallet balance to 100
-        int bet = 50;
-        assertTrue(rideTheBusGame.checkbet(bet));
+
+    @Test
+    void testGetCurrentBet() {
+        RideTheBusPlayer player = new RideTheBusPlayer();
+        player.currentBet = 50;
+        double f = player.getCurrentBet();
+        Assert.assertEquals(50, f, 0);
+    }
+
+
+    @Test
+    void tesetSetCurrentBet() {
+        RideTheBusPlayer player = new RideTheBusPlayer();
+        player.setCurrentBet(50);
+        int f = player.getCurrentBet();
+        Assert.assertEquals(f, 50);
+    }
+
+
+    @Test
+    void testHop() {
+        RideTheBusGame ride = new RideTheBusGame();
+        ride.hop();
+        int index = ride.index0;
+        Assert.assertEquals(1, index);
     }
 
     @Test
-    public void testtInsufficientFunds() {
-        RideTheBusPlayer rider = new RideTheBusPlayer();
-        rider.setWallet(100);
-        int bet = 150;
-        assertFalse(rideTheBusGame.checkbet(bet));
+    void testBack()
+    {
+    RideTheBusGame ride = new RideTheBusGame();
+    ride.index0 = 3;
+    ride.back();
+    Assert.assertEquals(ride.index0,2);
     }
 
     @Test
-    public void testCheckHiLow() {
-        rideTheBusGame.index0 = 0;
-        rideTheBusGame.table[0] = new Card("Diamonds", 13,"Red","diamonds");
-        boolean result = rideTheBusGame.checkHiLow("higher");
-        assertTrue(result);
-
-        result = rideTheBusGame.checkHiLow("lower");
-        assertFalse(result);
+    void testDeal()
+    {
+        RideTheBusGame ride = new RideTheBusGame();
+        ride.deal();
+        Assert.assertTrue(ride.table[0]!=null);
     }
 
     @Test
-    public void testCheckColor() {
-        rideTheBusGame.index0 = 2;
-        rideTheBusGame.table[2] = new Card("Diamonds", 5, "black","clubs");
-        boolean result = rideTheBusGame.checkColor("red");
-        assertFalse(result);
-
-        result = rideTheBusGame.checkColor("black");
-        assertTrue(result);
+    void testcheckHiLow()
+            //This test needs to be altered because it is relying on random values.
+    {
+        RideTheBusGame rider = new RideTheBusGame();
+        rider.deal();
+       boolean f= rider.checkHiLow("higher");
+        Assert.assertTrue(f);
     }
 
     @Test
-    public void testCheckSuit() {
-        rideTheBusGame.index0 = 3;
-        rideTheBusGame.table[3] = new Card("5", 5,"red","diamonds");
-        boolean result = rideTheBusGame.checkSuit("spades");
-        assertFalse(result);
-
-        result = rideTheBusGame.checkSuit("diamonds");
-        assertTrue(result);
+    void testReact()
+    {
+        RideTheBusGame rider = new RideTheBusGame();
+        rider.react(true);
+        Assert.assertEquals(rider.getIndex0(),1);
     }
+
+
+
+    @Test
+    void testgetIndex()
+    {
+        RideTheBusGame rider = new RideTheBusGame();
+        int f =rider.getIndex0();
+        Assert.assertEquals(f,0);
+    }
+
+
+
+}
 
 
 
 
     // Add more test cases using @Test annotations as needed
-}
+

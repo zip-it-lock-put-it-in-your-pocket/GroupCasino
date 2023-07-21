@@ -7,6 +7,10 @@ import com.github.zipcodewilmington.casino.CasinoAccount;
  */
 public class SlotsPlayer {
 
+    public int getCurrentBet() {
+        return CurrentBet;
+    }
+
     int CurrentBet = 0;
     int wallet;
     boolean active = true;
@@ -42,6 +46,10 @@ public class SlotsPlayer {
         active = true;
     }
 
+    public void setnotActive()
+    {
+        active = false;
+    }
 
         public int getWallet()
 
