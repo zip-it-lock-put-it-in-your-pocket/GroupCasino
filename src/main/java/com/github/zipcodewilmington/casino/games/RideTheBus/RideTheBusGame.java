@@ -1,5 +1,6 @@
 package com.github.zipcodewilmington.casino.games.RideTheBus;
 
+import com.github.zipcodewilmington.casino.GameInterface;
 import com.github.zipcodewilmington.casino.games.Card;
 import com.github.zipcodewilmington.casino.games.Deck;
 import com.github.zipcodewilmington.utils.AnsiColor;
