@@ -90,7 +90,9 @@ public class CasinoAccountManager extends CasinoAccount{
     }
     public static void addAllAccounts(){
         data.put("Santos",new CasinoAccount("Santos","123" , 1000));
-        data.put("Kantos",new CasinoAccount("kantos","ugh" , 1000));
+
+        
+
         try {
             Scanner fileIn = new Scanner(new File("src/main/java/com/github/zipcodewilmington/casino/Accounts.txt"));
 
