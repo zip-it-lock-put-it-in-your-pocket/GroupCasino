@@ -1,12 +1,12 @@
 package com.github.zipcodewilmington.casino.games.BlackJack;
 
-public class Card {
+public class BlackJackCard {
     //vars
     private Suit suit;
     private Rank rank;
 
     //creates a card with a given suit and rank
-    public Card(Suit suit, Rank rank){
+    public BlackJackCard(Suit suit, Rank rank){
         this.suit = suit;
         this.rank = rank;
     }
@@ -21,5 +21,9 @@ public class Card {
     }
     public String toString(){
         return ("["+rank+"of"+suit+"]("+this.getValue()+")");
+    }
+    public BlackJackCard(BlackJackCard blackJackCard){
+        this.suit = blackJackCard.getSuit();
+        this.rank = blackJackCard.getRank();
     }
 }
