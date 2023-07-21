@@ -71,7 +71,7 @@ public class rouletteTable {
         }
 
         public String getColors(int number) {
-         return num
+         return  null;
         }
 
 

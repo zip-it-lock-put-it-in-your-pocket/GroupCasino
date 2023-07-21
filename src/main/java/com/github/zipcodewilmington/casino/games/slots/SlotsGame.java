@@ -1,8 +1,6 @@
 package com.github.zipcodewilmington.casino.games.slots;
 
 import com.github.zipcodewilmington.casino.CasinoAccount;
-import com.github.zipcodewilmington.casino.GameInterface;
-import com.github.zipcodewilmington.casino.PlayerInterface;
 import com.github.zipcodewilmington.utils.AnsiColor;
 import com.github.zipcodewilmington.utils.IOConsole;
 
@@ -61,12 +59,12 @@ public class SlotsGame  {
             String ret = scan.nextLine().toLowerCase();
             if(ret.equals("yes")||ret.equals("y"))
             {
-
+                slotsPlayer.setWallet(slotsPlayer.CurrentBet);
                 run();
             }
-           else if(ret=="no"||ret=="n")
+           else if(ret.equals("no")||ret.equals("n"))
             {
-                slotsPlayer.setWallet(slotsPlayer.wallet+ slotsPlayer.CurrentBet);
+                slotsPlayer.setWallet(slotsPlayer.CurrentBet);
                 retr.setCasinoBalance(retr.getCasinoBalance()+ slotsPlayer.getWallet());
             }
         }
@@ -100,6 +98,7 @@ public class SlotsGame  {
             return false;
         }
         slotsPlayer.placeBet(bet);
+        retr.setCasinoBalance(retr.getCasinoBalance()-bet);
         slotsPlayer.setWallet(slotsPlayer.wallet-bet);
         System.out.println("You bet has been set.");
         return true;
