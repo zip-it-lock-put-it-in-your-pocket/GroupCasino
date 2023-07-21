@@ -1,11 +1,10 @@
 package com.github.zipcodewilmington.casino;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by leon on 7/21/2020.
@@ -28,14 +27,11 @@ public class CasinoAccountManager extends CasinoAccount{
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry) it.next();
             acc = (CasinoAccount) pair.getValue();
-            if (data.containsKey(accountName) && accountPassword == acc.getAccountPassword()) {
-
-                break;
-            }
-            else if (!data.containsKey(accountName) && accountPassword == acc.getAccountPassword()){
-                acc=null;
+            if (!data.containsKey(accountName) || !Objects.equals(accountPassword, acc.getAccountPassword())) {
+                acc = null;
 
             }
+            break;
         }
         return acc;
     }
@@ -90,7 +86,7 @@ public class CasinoAccountManager extends CasinoAccount{
     public static void addAllAccounts(){
         data.put("Santos",new CasinoAccount("Santos","123" , 1000));
         try {
-            Scanner fileIn = new Scanner(new File("ATM/Accounts"));
+            Scanner fileIn = new Scanner(new File("src/main/java/com/github/zipcodewilmington/casino/Accounts.txt"));
 
             while (fileIn.hasNextLine())
             {
@@ -108,6 +104,39 @@ public class CasinoAccountManager extends CasinoAccount{
         }
         catch (IOException e) {
             System.out.println("File not found");
+        }
+    }
+    public static void addtofile(){
+        //add to file
+        File file = new File("src/main/java/com/github/zipcodewilmington/casino/Accounts.txt");
+        BufferedWriter bf = null;
+        //adds account to properties
+        try {
+
+            // create new BufferedWriter for the output file
+            bf = new BufferedWriter(new FileWriter(file));
+
+            // iterate map entries
+            for (Map.Entry<String, CasinoAccount> entry : data.entrySet()) {
+                // put key and value separated by a colon
+                bf.write(entry.getKey() + "," + entry.getValue().getName()+","+entry.getValue().getAccountPassword()+","+entry.getValue().getCasinoBalance());
+                // new line
+                bf.newLine();
+            }
+            bf.flush();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        finally {
+
+            try {
+
+                // always close the writer
+                bf.close();
+            }
+            catch (Exception e) {
+            }
         }
     }
 }
