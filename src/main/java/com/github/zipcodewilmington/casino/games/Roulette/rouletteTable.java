@@ -6,17 +6,19 @@ import java.util.Random;
 
 
 public class rouletteTable {
-   private ArrayList numbers;
-    private String colors;
+    private final ArrayList numbers;
+
+    private final HashMap<Object, Object> numbertocolor = new HashMap<>();
     Random random = new Random();
     
     
 
-    public rouletteTable(ArrayList numbers) {
+    public rouletteTable(ArrayList numbers, String colors) {
         this.numbers = numbers;
 
         rouletteGetNumbers();
         rouletteGetColors();
+
     }
 
         private void rouletteGetNumbers () {
@@ -25,7 +27,6 @@ public class rouletteTable {
             }
         }
         private void rouletteGetColors () {
-            HashMap<Object, Object> numbertocolor = new HashMap<>();
             numbertocolor.put(0, "green");
             numbertocolor.put(1, "red");
             numbertocolor.put(2, "black");
@@ -71,10 +72,8 @@ public class rouletteTable {
         }
 
         public String getColors(int number) {
-         return num
+         return (String) numbertocolor.getOrDefault(number, "unknown");
         }
-
-
 
 
 }

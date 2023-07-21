@@ -14,4 +14,11 @@ class rouletteTableTest {
     void getColors() {
     }
 
+    @Test
+    void testSpinWheel() {
+    }
+
+    @Test
+    void testGetColors() {
+    }
 }
