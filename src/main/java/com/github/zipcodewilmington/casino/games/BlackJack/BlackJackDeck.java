@@ -1,6 +1,8 @@
 package com.github.zipcodewilmington.casino.games.BlackJack;
 
 import java.util.ArrayList;
+import java.util.Collections;
+
 import com.github.zipcodewilmington.casino.games.Card;
 
 public class BlackJackDeck {
@@ -8,12 +10,22 @@ public class BlackJackDeck {
 
     public BlackJackDeck() {
 
-
         deck = new ArrayList<BlackJackCard>();
     }
 
-    public void addCard(BlackJackCard blackjackcard) {
+    public ArrayList<BlackJackCard> getBlackJackCards() {
+        return deck;
+    }
+
+    public BlackJackDeck(BlackJackDeck bjd){
+        Collections.copy(this.deck, bjd.getBlackJackCards());
+    }
+
+    public void addBlackJackCard(BlackJackCard blackjackcard) {
         deck.add(blackjackcard);  //this adds a single card to the deck
+    }
+    public void addBlackJackCards(ArrayList<BlackJackCard> blackJackCards){
+        deck.addAll(blackJackCards);
     }
 
     public String toString() {
@@ -57,5 +69,21 @@ public class BlackJackDeck {
     }
 
     public boolean hasBlackJackCards() {
+        if (deck.size()>0){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
+
+    public void reloadBlackJackDeckFromDiscard(BlackJackDeck discard) {
+        this.addBlackJackCards(discard.getBlackJackCards());
+        this.shuffle();
+        discard.emptyBlackJackDeck();
+        System.out.println("Ran out of cards, creating new deck from discard pile & shuffling deck.");
+    }
+    public int blackJackCardsLeft(){return deck.size();}
+
+    public void emptyBlackJackDeck(){deck.clear();}
 }

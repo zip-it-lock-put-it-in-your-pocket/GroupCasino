@@ -19,11 +19,16 @@ public abstract class Person {
         System.out.println(this.name + "'s hand looks like this:");
         System.out.println(this.hand + " Valued at: " + this.hand.calculatedValue());
     }
+
+
     public void hit(BlackJackDeck deck, BlackJackDeck discard){
 
-        if (!deck.hasBlackJackCards()){
-            deck.relaodBlackJackDeckFromDiscard(discard);
-        }
+       if (!deck.hasBlackJackCards()){
+           deck.reloadBlackJackDeckFromDiscard(discard);
+       }
+       this.hand.takeBlackJackCardFromDeck(deck);
+        System.out.println(this.name + " gets a card");
+        this.printHand();
     }
     public boolean hasBlackJack(){
         if (this.getHand().calculatedValue() ==21){
@@ -32,4 +37,5 @@ public abstract class Person {
             return false;
         }
     }
+
 }

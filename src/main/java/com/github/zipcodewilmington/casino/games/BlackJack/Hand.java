@@ -10,13 +10,11 @@ public class Hand {
     }
     public void takeBlackJackCardFromDeck(BlackJackDeck deck){
         hand.add(deck.takeBlackJackCard());
-    } public void discardHandToBlackJackDeck(BlackJackDeck DISCKdeck) {
-        discarddeck.addBlackJackCards(hand);
+    } public void discardHandToBlackJackDeck(BlackJackDeck discardBlackJackDeck) {
+        discardBlackJackDeck.addBlackJackCards(hand);
 
         hand.clear();
     }
-
-
     public String toString() {
       String output = "";
       for(BlackJackCard card: hand){
@@ -24,7 +22,7 @@ public class Hand {
       }
       return output;
     }
-    public int CalculatedValue(){
+    public int calculatedValue(){
         int value = 0;
         int aceCount = 0;
 
