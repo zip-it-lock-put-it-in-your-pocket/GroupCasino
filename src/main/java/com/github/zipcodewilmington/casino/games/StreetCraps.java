@@ -106,7 +106,7 @@ public class StreetCraps {
         }
         return false;
     }
-    public boolean checkbet(int bet)
+    public static boolean checkbet(int bet)
     {
         if(bet>streetCrapsPlayer.getCasinoBalance())
         {
@@ -119,4 +119,5 @@ public class StreetCraps {
         System.out.println("You bet has been set.");
         return true;
     }
+
 }

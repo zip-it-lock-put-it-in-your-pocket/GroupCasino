@@ -1,4 +1,5 @@
 package com.github.zipcodewilmington.casino.games;
+import com.github.zipcodewilmington.casino.CasinoAccount;
 import com.github.zipcodewilmington.casino.games.DiceRoll;
 import com.github.zipcodewilmington.casino.games.StreetCraps;
 import org.junit.Assert;
@@ -47,6 +48,30 @@ public class CrapsTest {
         boolean expected=false;
         //when
         boolean actual=StreetCraps.checkLoss(7);
+        //then
+        Assert.assertEquals(actual,expected);
+    }
+    @Test
+    public void checkBet(){
+        CasinoAccount bob=new CasinoAccount();
+        bob.setCasinoBalance(90);
+        new StreetCraps(bob);
+        //given
+        boolean expected=false;
+        //when
+        boolean actual=StreetCraps.checkbet(100);
+        //then
+        Assert.assertEquals(actual,expected);
+    }
+    @Test
+    public void checkBet2(){
+        CasinoAccount bob=new CasinoAccount();
+        bob.setCasinoBalance(110);
+        new StreetCraps(bob);
+        //given
+        boolean expected=true;
+        //when
+        boolean actual=StreetCraps.checkbet(100);
         //then
         Assert.assertEquals(actual,expected);
     }
