@@ -127,12 +127,12 @@ public class CasinoWar {
         }
     }
 
-    public static void main(String[] args) {
-        CasinoWar casinoWar = new CasinoWar();
 
-        while (!casinoWar.deck.isEmpty()) {
-            casinoWar.playersTurn();
-            casinoWar.displayScore();
+
+        public void run(){
+        while (!this.deck.isEmpty()) {
+            this.playersTurn();
+           this.displayScore();
         }
     }
 
