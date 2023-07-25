@@ -1,5 +1,6 @@
 package com.github.zipcodewilmington.casino.games.RideTheBus;
 
+import com.github.zipcodewilmington.casino.CasinoAccount;
 import com.github.zipcodewilmington.casino.games.Card;
 import com.github.zipcodewilmington.casino.games.RideTheBus.RideTheBusGame;
 import org.junit.Assert;
@@ -10,7 +11,8 @@ class RideTheBusGameTest {
 
     @Test
     void testGetWallet() {
-        RideTheBusPlayer player = new RideTheBusPlayer();
+        CasinoAccount s= new CasinoAccount(null,null,50.0);
+        RideTheBusPlayer player = new RideTheBusPlayer(s);
         player.setWallet(10000.0);
         double f = player.getWallet();
         Assert.assertEquals(10000.0, f, 0);
@@ -19,7 +21,9 @@ class RideTheBusGameTest {
 
     @Test
     void testSetWallet() {
-        RideTheBusPlayer player = new RideTheBusPlayer();
+        CasinoAccount s = new CasinoAccount(null,null,50.0);
+
+        RideTheBusPlayer player = new RideTheBusPlayer(s);
         player.setWallet(50000.0);
         double f = player.getWallet();
         Assert.assertEquals(50000.0, f, 0);
@@ -28,7 +32,9 @@ class RideTheBusGameTest {
 
     @Test
     void testGetCurrentBet() {
-        RideTheBusPlayer player = new RideTheBusPlayer();
+        CasinoAccount s = new CasinoAccount(null,null,50.0);
+
+        RideTheBusPlayer player = new RideTheBusPlayer(s);
         player.currentBet = 50;
         double f = player.getCurrentBet();
         Assert.assertEquals(50, f, 0);
@@ -37,7 +43,9 @@ class RideTheBusGameTest {
 
     @Test
     void tesetSetCurrentBet() {
-        RideTheBusPlayer player = new RideTheBusPlayer();
+        CasinoAccount s = new CasinoAccount(null,null,50.0);
+
+        RideTheBusPlayer player = new RideTheBusPlayer(s);
         player.setCurrentBet(50);
         int f = player.getCurrentBet();
         Assert.assertEquals(f, 50);
@@ -46,7 +54,9 @@ class RideTheBusGameTest {
 
     @Test
     void testHop() {
-        RideTheBusGame ride = new RideTheBusGame();
+        CasinoAccount f = new CasinoAccount(null,null,50.0);
+
+        RideTheBusGame ride = new RideTheBusGame(f);
         ride.hop();
         int index = ride.index0;
         Assert.assertEquals(1, index);
@@ -55,7 +65,9 @@ class RideTheBusGameTest {
     @Test
     void testBack()
     {
-    RideTheBusGame ride = new RideTheBusGame();
+        CasinoAccount f = new CasinoAccount(null,null,50.0);
+
+        RideTheBusGame ride = new RideTheBusGame(f);
     ride.index0 = 3;
     ride.back();
     Assert.assertEquals(ride.index0,2);
@@ -64,7 +76,9 @@ class RideTheBusGameTest {
     @Test
     void testDeal()
     {
-        RideTheBusGame ride = new RideTheBusGame();
+        CasinoAccount f = new CasinoAccount(null,null,50.0);
+
+        RideTheBusGame ride = new RideTheBusGame(f);
         ride.deal();
         Assert.assertTrue(ride.table[0]!=null);
     }
@@ -73,7 +87,9 @@ class RideTheBusGameTest {
     void testcheckHiLow()
             //This test needs to be altered because it is relying on random values.
     {
-        RideTheBusGame rider = new RideTheBusGame();
+        CasinoAccount s = new CasinoAccount(null,null,50.0);
+
+        RideTheBusGame rider = new RideTheBusGame(s);
         rider.deal();
        boolean f= rider.checkHiLow("higher");
         Assert.assertTrue(f);
@@ -82,7 +98,9 @@ class RideTheBusGameTest {
     @Test
     void testReact()
     {
-        RideTheBusGame rider = new RideTheBusGame();
+        CasinoAccount f = new CasinoAccount(null,null,50.0);
+
+        RideTheBusGame rider = new RideTheBusGame(f);
         rider.react(true);
         Assert.assertEquals(rider.getIndex0(),1);
     }
@@ -92,7 +110,9 @@ class RideTheBusGameTest {
     @Test
     void testgetIndex()
     {
-        RideTheBusGame rider = new RideTheBusGame();
+        CasinoAccount s = new CasinoAccount(null,null,50.0);
+
+        RideTheBusGame rider = new RideTheBusGame(s);
         int f =rider.getIndex0();
         Assert.assertEquals(f,0);
     }
