@@ -67,6 +67,69 @@ class BlackJackTest {
     }
 
 
+    @Test
+    public void testAce()
+    {
+        BlackJackCard blackjackcard = new BlackJackCard(BlackJackSuit.CLUB,BlackJackRankEnum.ACE);
+        int actual = blackjackcard.getValue();
+        int expected = 11;
+        Assert.assertEquals(actual,expected);
+    }
+
+    @Test
+    public void test10()
+    {
+        BlackJackCard blackjackcard = new BlackJackCard(BlackJackSuit.CLUB,BlackJackRankEnum.TEN);
+        int actual = blackjackcard.getValue();
+        int expected = 10;
+        Assert.assertEquals(actual,expected);
+    }
+
+
+    @Test
+    public void test9()
+    {
+        BlackJackCard blackjackcard = new BlackJackCard(BlackJackSuit.CLUB,BlackJackRankEnum.NINE);
+        int actual = blackjackcard.getValue();
+        int expected = 9;
+        Assert.assertEquals(actual,expected);
+    }
+    @Test
+    public void testClub()
+    {
+        BlackJackCard blackjackcard = new BlackJackCard(BlackJackSuit.CLUB,BlackJackRankEnum.NINE);
+        String actual = String.valueOf(blackjackcard.getSuit());
+        String expected = "Clubs";
+        Assert.assertEquals(actual,expected);
+    }
+
+    @Test
+    public void testspade()
+    {
+        BlackJackCard blackjackcard = new BlackJackCard(BlackJackSuit.SPADE,BlackJackRankEnum.NINE);
+        String actual = String.valueOf(blackjackcard.getSuit());
+        String expected = "Spades";
+        Assert.assertEquals(actual,expected);
+    }
+
+
+    @Test
+    public void testDiamonds()
+    {
+        BlackJackCard blackjackcard = new BlackJackCard(BlackJackSuit.DIAMOND,BlackJackRankEnum.NINE);
+        String actual = String.valueOf(blackjackcard.getSuit());
+        String expected = "Diamonds";
+        Assert.assertEquals(actual,expected);
+    }
+
+    @Test
+    public void testHeart()
+    {
+        BlackJackCard blackjackcard = new BlackJackCard(BlackJackSuit.HEART,BlackJackRankEnum.NINE);
+        String actual = String.valueOf(blackjackcard.getSuit());
+        String expected = "Hearts";
+        Assert.assertEquals(actual,expected);
+    }
 
 
 }
