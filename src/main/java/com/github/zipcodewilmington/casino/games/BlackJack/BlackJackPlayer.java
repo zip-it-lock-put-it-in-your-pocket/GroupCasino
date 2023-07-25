@@ -2,9 +2,7 @@ package com.github.zipcodewilmington.casino.games.BlackJack;
 
 import java.util.Scanner;
 
-/**
- * Handles all Player specific operations
- */
+
 public class BlackJackPlayer extends BlackJackPerson {
 
     Scanner input = new Scanner(System.in);

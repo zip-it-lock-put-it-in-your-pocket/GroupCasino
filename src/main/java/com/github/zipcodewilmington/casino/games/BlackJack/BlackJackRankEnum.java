@@ -1,8 +1,6 @@
 package com.github.zipcodewilmington.casino.games.BlackJack;
 
-/**
- * Contains the Ranks of Cards, Names, and Values
- */
+
 public enum BlackJackRankEnum {
     ACE("Ace", 11),
     TWO("Two", 2),

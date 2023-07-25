@@ -132,5 +132,49 @@ class BlackJackTest {
     }
 
 
+    @Test
+    public void testempyDeck()
+    {
+        BlackJackDeck blackJackDeck = new BlackJackDeck();
+        blackJackDeck.emptyDeck();
+        int actual = blackJackDeck.getDeck().size();
+        int expected = 0;
+        Assert.assertEquals(actual,expected);
+    }
+
+    @Test
+    public void testGetName()
+    {
+        BlackJackDealer blackJackDealer = new BlackJackDealer();
+        String actual = blackJackDealer.getName();
+        String expected = "Dealer";
+        Assert.assertEquals(actual,expected);
+    }
+
+
+    @Test
+    public void test99()
+    {
+        BlackJackCard blackjackcard = new BlackJackCard(BlackJackSuit.CLUB,BlackJackRankEnum.NINE);
+        int actual = blackjackcard.getValue();
+        int expected = 9;
+        Assert.assertEquals(actual,expected);
+    }
+
+    @Test
+    public void test8()
+    {
+        BlackJackCard blackjackcard = new BlackJackCard(BlackJackSuit.CLUB,BlackJackRankEnum.EIGHT);
+        int actual = blackjackcard.getValue();
+        int expected = 8;
+        Assert.assertEquals(actual,expected);
+    }
+
+
+
+
+
+
+
 }
 

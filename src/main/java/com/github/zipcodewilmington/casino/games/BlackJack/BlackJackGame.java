@@ -1,8 +1,6 @@
 package com.github.zipcodewilmington.casino.games.BlackJack;
 
-/**
- * Contains all Game logic
- */
+
 public class BlackJackGame {
 
     //Declare variables needed for Game class
@@ -19,9 +17,7 @@ public class BlackJackGame {
 
 
 
-    /**
-     * Constructor for Game, creates our variables and starts the Game
-     */
+
     public BlackJackGame(){
 
         //Create a new deck with 52 cards
@@ -39,10 +35,6 @@ public class BlackJackGame {
         startRound();
     }
 
-
-    /**
-     * Start a new round, display score, give out cards, check for BlackJack, ask player what they want to do
-     */
     private void startRound(){
 /*        wins = 0; losses = 0; pushes = 1;
         Card testCard = new Card(Suit.CLUB,Rank.NINE);

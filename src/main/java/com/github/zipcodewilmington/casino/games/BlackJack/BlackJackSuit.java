@@ -1,8 +1,6 @@
 package com.github.zipcodewilmington.casino.games.BlackJack;
 
-/**
- * Contains the suits of a Card, Names
- */
+
 public enum BlackJackSuit {
     CLUB("Clubs"),
     DIAMOND("Diamonds"),

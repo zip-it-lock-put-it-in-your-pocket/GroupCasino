@@ -13,22 +13,11 @@ public class BlackJackHand {
         hand = new ArrayList<BlackJackCard>();
     }
 
-    /**
-     * Take a single card from the top of this deck and add it to the hand, removing it from the previous deck
-     * @param blackJackDeck The deck of cards we're taking from
-     */
     public void takeCardFromDeck(BlackJackDeck blackJackDeck){
         hand.add(blackJackDeck.takeCard());
     }
 
-    /**
-     * Add a single card to this hand
-     * @param c The card being added
-     */
-    /**
-     *
-     * @param discardBlackJackDeck The deck we're discarding this hand to
-     */
+
     public void discardHandToDeck(BlackJackDeck discardBlackJackDeck){
 
         //copy cards from hand to discardDeck
@@ -39,10 +28,7 @@ public class BlackJackHand {
 
     }
 
-    /**
-     *
-     * @return The hand with all its cards in a single line String
-     */
+
     public String toString(){
         String output = "";
         for(BlackJackCard blackJackCard : hand){
@@ -52,10 +38,7 @@ public class BlackJackHand {
     }
 
 
-    /**
-     *
-     * @return The calculated numerical value of the hand as an integer
-     */
+
     public int calculatedValue(){
 
         //variable to count number of aces, and current total value
@@ -84,11 +67,6 @@ public class BlackJackHand {
     }
 
 
-    /**
-     *
-     * @param idx the index of the card we're getting
-     * @return the card we got
-     */
     public BlackJackCard getCard(int idx){
         return hand.get(idx);
     }

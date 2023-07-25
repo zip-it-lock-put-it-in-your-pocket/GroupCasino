@@ -1,16 +1,11 @@
 package com.github.zipcodewilmington.casino.games.BlackJack;
 
-/**
- * Used for shared logic between the dealer and player
- */
+
 public abstract class BlackJackPerson {
 
     private BlackJackHand blackJackHand;
     private String name;
 
-    /**
-     * Create a new Person
-     */
     public BlackJackPerson(){
         this.blackJackHand = new BlackJackHand();
         this.name = "";
@@ -31,18 +26,14 @@ public abstract class BlackJackPerson {
         this.name = name;
     }
 
-    /**
-     * Prints a formatted version of the Person's hand
-     */
+
+
     public void printHand(){
         System.out.println(this.name + "'s hand looks like this:");
         System.out.println(this.blackJackHand + " Valued at: " + this.blackJackHand.calculatedValue());
     }
 
-    /**
-     * Player takes a card from the deck
-     * @param blackJackDeck
-     */
+
     public void hit(BlackJackDeck blackJackDeck, BlackJackDeck discard){
 
         //If there's no cards left in the deck
