@@ -9,12 +9,15 @@ import com.github.zipcodewilmington.casino.games.numberguess.NumberGuessGame;
 import com.github.zipcodewilmington.casino.games.numberguess.NumberGuessPlayer;
 import com.github.zipcodewilmington.casino.games.slots.SlotsGame;
 import com.github.zipcodewilmington.casino.games.slots.SlotsPlayer;
+import com.github.zipcodewilmington.casino.games.CasinoWar.CasinoWar;
+
 import com.github.zipcodewilmington.utils.AnsiColor;
 import com.github.zipcodewilmington.utils.IOConsole;
 
 /**
  * Created by leon on 7/21/2020.
  */
+/*
 public class Casino implements Runnable {
     private final IOConsole console = new IOConsole(AnsiColor.BLUE);
 
@@ -93,5 +96,4 @@ public class Casino implements Runnable {
         PlayerInterface player = (PlayerInterface)playerObject;
         game.add(player);
         game.run();
-    }
-}
+    }*/
