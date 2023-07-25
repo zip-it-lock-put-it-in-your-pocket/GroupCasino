@@ -38,6 +38,9 @@ public class Hand {
                 value -= 10;
             }
         } return value;
+    } public BlackJackCard getCard(int idx){
+        return hand.get(idx);
     }
+
 }
 

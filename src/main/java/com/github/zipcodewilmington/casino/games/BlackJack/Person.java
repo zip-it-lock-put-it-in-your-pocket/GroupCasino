@@ -37,5 +37,8 @@ public abstract class Person {
             return false;
         }
     }
-
+    public void printHand(){
+        System.out.println(this.name + "'s hand looks like this:");
+        System.out.println(this.hand + " Valued at: " + this.hand.calculatedValue());
+    }
 }

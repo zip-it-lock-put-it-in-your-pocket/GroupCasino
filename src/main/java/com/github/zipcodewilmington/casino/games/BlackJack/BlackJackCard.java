@@ -26,4 +26,5 @@ public class BlackJackCard {
         this.suit = blackJackCard.getSuit();
         this.rank = blackJackCard.getRank();
     }
+
 }
