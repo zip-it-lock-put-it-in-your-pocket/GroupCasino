@@ -17,36 +17,36 @@ public class CasinoAccountManager extends CasinoAccount{
      * @param accountPassword password of account to be returned
      * @return `ArcadeAccount` with specified `accountName` and `accountPassword`
      */
-  /*  public static LinkedHashMap<String, CasinoAccount> data = new LinkedHashMap<String, CasinoAccount>();
+
+    public static LinkedHashMap<String, CasinoAccount> data = new LinkedHashMap<String, CasinoAccount>();
+
 
     public CasinoAccount getAccount(String accountName, String accountPassword) {
 
         boolean end=false;
         Iterator it = data.entrySet().iterator();
         CasinoAccount acc = null;
-        // acc=data.get(accountName);
+       // acc=data.get(accountName);
 
-        while (it.hasNext()&& !end) {
-            Map.Entry pair = (Map.Entry) it.next();
-            acc = (CasinoAccount) pair.getValue();
-            if (Objects.equals(acc.getName(), accountName) && Objects.equals(acc.getAccountPassword(), accountPassword)) {
-                end = true;
-            }
-            else{
-                acc=null;
-            }
-
+            while (it.hasNext()&& !end) {
+                Map.Entry pair = (Map.Entry) it.next();
+                acc = (CasinoAccount) pair.getValue();
+                if (Objects.equals(acc.getName(), accountName) && Objects.equals(acc.getAccountPassword(), accountPassword)) {
+                    end = true;
+                }
+                else{
+                    acc=null;
+                }
         }
 
         return acc;
     }
 
 
-
-    //String currentMethodName = new Object(){}.getClass().getEnclosingMethod().getName();
-    //String currentClassName = getClass().getName();
-    //String errorMessage = "Method with name [ %s ], defined in class with name [ %s ] has  not yet been implemented";
-    //throw new RuntimeException(String.format(errorMessage, currentMethodName, currentClassName));
+        //String currentMethodName = new Object(){}.getClass().getEnclosingMethod().getName();
+        //String currentClassName = getClass().getName();
+        //String errorMessage = "Method with name [ %s ], defined in class with name [ %s ] has  not yet been implemented";
+        //throw new RuntimeException(String.format(errorMessage, currentMethodName, currentClassName));
 
 
 
@@ -57,7 +57,7 @@ public class CasinoAccountManager extends CasinoAccount{
      * @param accountPassword password of account to be created
      * @return new instance of `ArcadeAccount` with specified `accountName` and `accountPassword`
      */
-    /*
+    
     public CasinoAccount createAccount(String accountName, String accountPassword) {
         CasinoAccount account=new CasinoAccount();
 
@@ -79,7 +79,7 @@ public class CasinoAccountManager extends CasinoAccount{
      *
      * @param casinoAccount the arcadeAccount to be added to `this.getArcadeAccountList()`
      */
-    /*
+    
     public void registerAccount(CasinoAccount casinoAccount) {
 
 
@@ -93,7 +93,7 @@ public class CasinoAccountManager extends CasinoAccount{
     public static void addAllAccounts(){
         data.put("Santos",new CasinoAccount("Santos","123" , 1000));
 
-
+        
 
         try {
             Scanner fileIn = new Scanner(new File("src/main/java/com/github/zipcodewilmington/casino/Accounts.txt"));
@@ -146,5 +146,6 @@ public class CasinoAccountManager extends CasinoAccount{
             catch (Exception e) {
             }
         }
-    }*/
+
+    }
 }
