@@ -4,6 +4,7 @@ import com.github.zipcodewilmington.casino.CasinoAccount;
 import com.github.zipcodewilmington.casino.CasinoAccountManager;
 import com.github.zipcodewilmington.casino.GameInterface;
 import com.github.zipcodewilmington.casino.PlayerInterface;
+import com.github.zipcodewilmington.casino.games.BlackJack.BlackJackGame;
 import com.github.zipcodewilmington.casino.games.RideTheBus.RideTheBusGame;
 import com.github.zipcodewilmington.casino.games.StreetCraps;
 import com.github.zipcodewilmington.casino.games.numberguess.NumberGuessGame;
@@ -62,6 +63,9 @@ public class Casino implements Runnable {
                     } else if (gameSelectionInput.equals("STREETCRAPS")) {
                         StreetCraps craps = new StreetCraps(casinoAccount);
                         craps.run();
+                    }
+                        else if (gameSelectionInput.equals("BLACKJACK")) {
+                            BlackJackGame.runBlackJack();
                     } else {
                         // TODO - implement better exception handling
                         String errorMessage = "[ %s ] is an invalid game selection";
@@ -96,7 +100,7 @@ public class Casino implements Runnable {
         return console.getStringInput(new StringBuilder()
                 .append("Welcome to the Game Selection Dashboard!")
                 .append("\nFrom here, you can select any of the following options:")
-                .append("\n\t[ SLOTS ], [ RIDETHEBUS ], [ WAR ], [ STREETCRAPS ]")
+                .append("\n\t[ SLOTS ], [ RIDETHEBUS ], [ WAR ], [ STREETCRAPS ], [ BLACKJACK ] ")
                 .toString());
     }
 

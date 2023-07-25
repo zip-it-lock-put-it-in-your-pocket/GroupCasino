@@ -1,10 +1,10 @@
 package com.github.zipcodewilmington.casino.games.BlackJack;
 
-public enum Rank {
 
-    ACE("Ace",11),
-    TWO("Two",2),
-    THREE("Three",3),
+public enum BlackJackRankEnum {
+    ACE("Ace", 11),
+    TWO("Two", 2),
+    THREE("Three", 3),
     FOUR("Four",4),
     FIVE("Five",5),
     SIX("Six",6),
@@ -15,14 +15,16 @@ public enum Rank {
     JACK("Jack",10),
     QUEEN("Queen",10),
     KING("King",10);
+
     String rankName;
     int rankValue;
-    Rank(String rankName, int rankValue){
+
+    BlackJackRankEnum(String rankName, int rankValue){
         this.rankName = rankName;
         this.rankValue = rankValue;
     }
+
     public String toString(){
         return rankName;
     }
-
 }
