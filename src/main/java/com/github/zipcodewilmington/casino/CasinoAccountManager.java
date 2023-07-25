@@ -17,7 +17,9 @@ public class CasinoAccountManager extends CasinoAccount{
      * @param accountPassword password of account to be returned
      * @return `ArcadeAccount` with specified `accountName` and `accountPassword`
      */
+
     public static LinkedHashMap<String, CasinoAccount> data = new LinkedHashMap<String, CasinoAccount>();
+
 
     public CasinoAccount getAccount(String accountName, String accountPassword) {
 
@@ -35,12 +37,10 @@ public class CasinoAccountManager extends CasinoAccount{
                 else{
                     acc=null;
                 }
-
         }
 
         return acc;
     }
-
 
 
         //String currentMethodName = new Object(){}.getClass().getEnclosingMethod().getName();
@@ -57,6 +57,7 @@ public class CasinoAccountManager extends CasinoAccount{
      * @param accountPassword password of account to be created
      * @return new instance of `ArcadeAccount` with specified `accountName` and `accountPassword`
      */
+    
     public CasinoAccount createAccount(String accountName, String accountPassword) {
         CasinoAccount account=new CasinoAccount();
 
@@ -78,6 +79,7 @@ public class CasinoAccountManager extends CasinoAccount{
      *
      * @param casinoAccount the arcadeAccount to be added to `this.getArcadeAccountList()`
      */
+    
     public void registerAccount(CasinoAccount casinoAccount) {
 
 
@@ -144,5 +146,6 @@ public class CasinoAccountManager extends CasinoAccount{
             catch (Exception e) {
             }
         }
+
     }
 }
