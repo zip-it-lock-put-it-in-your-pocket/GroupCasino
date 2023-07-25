@@ -28,14 +28,14 @@ public class StreetCraps {
 
 
     public static void main(String[] args) {
+
+    }
+    public static void run() {
         int currentRoll;
         int wager;
-
-
-        while (!win && !gameover && !rollagain) {
-            System.out.println("Choose amount to wager");
-            wager=in.nextInt();
-
+        System.out.println("Choose amount to wager");
+        wager=in.nextInt();
+        while (!win && !gameover && !rollagain && checkbet(wager)) {
             currentRoll = rollDice();
             if(checkwin(currentRoll)){
                 win=true;
@@ -44,17 +44,13 @@ public class StreetCraps {
             }
             else if (checkLoss(currentRoll)){
                 gameover=true;
-
             }
             else{
                 point = currentRoll;
                 while(!rollagain) {
                     rollagain=rollAgain();
-
                 }
             }
-
-
         }
     }
 
@@ -80,11 +76,9 @@ public class StreetCraps {
         DiceRoll.GetDiceRoll(1);
         rollResult = DiceRoll.runSimulation();
         return rollResult;
-
     }
 
     public static boolean checkwin(int currentRoll) {
-
         if (currentRoll == winningNums[0] || currentRoll == winningNums[1]) {
             System.out.println("YOU WON");
             return true;
@@ -97,5 +91,18 @@ public class StreetCraps {
             return true;
         }
         return false;
+    }
+    public static boolean checkbet(int bet)
+    {
+        if(bet>streetCrapsPlayer.getCasinoBalance())
+        {
+            System.out.println("You do not have enough funds in your wallet for the bet you just made.");
+            System.out.println("Your account has: " + streetCrapsPlayer.getCasinoBalance());
+            return false;
+        }
+        streetCrapsPlayer.setCasinoBalance(streetCrapsPlayer.getCasinoBalance()-bet);
+
+        System.out.println("You bet has been set.");
+        return true;
     }
 }

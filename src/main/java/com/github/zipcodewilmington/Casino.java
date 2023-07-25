@@ -5,6 +5,7 @@ import com.github.zipcodewilmington.casino.CasinoAccountManager;
 import com.github.zipcodewilmington.casino.GameInterface;
 import com.github.zipcodewilmington.casino.PlayerInterface;
 import com.github.zipcodewilmington.casino.games.RideTheBus.RideTheBusGame;
+import com.github.zipcodewilmington.casino.games.StreetCraps;
 import com.github.zipcodewilmington.casino.games.numberguess.NumberGuessGame;
 import com.github.zipcodewilmington.casino.games.numberguess.NumberGuessPlayer;
 import com.github.zipcodewilmington.casino.games.slots.SlotsGame;
@@ -49,8 +50,16 @@ public class Casino implements Runnable {
                     }
                     else if (gameSelectionInput.equals("WAR")) {
                         CasinoWar.playCasinoWar();
-
                     }
+                    else if (gameSelectionInput.equals("CRAPS")) {
+                        StreetCraps slots = new StreetCraps(casinoAccount);
+                        try {
+                            StreetCraps.run();
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+
                     else {
                         // TODO - implement better exception handling
                         String errorMessage = "[ %s ] is an invalid game selection";
