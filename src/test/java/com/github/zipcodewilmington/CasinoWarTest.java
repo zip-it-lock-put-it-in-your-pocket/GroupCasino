@@ -1,14 +1,15 @@
 package com.github.zipcodewilmington;
 
+import com.github.zipcodewilmington.casino.games.CasinoWar.CasinoWar;
 
 import static org.junit.Assert.assertEquals;
 
-//import org.junit.Before;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Collections;
 
-/*public class CasinoWarTest {
+public class CasinoWarTest {
 
     private CasinoWar casinoWar;
 
@@ -89,4 +90,3 @@ import java.util.Collections;
 
     }
 }
-*/

@@ -9,6 +9,11 @@ public class BlackJackGame {
     private BlackJackDeck blackJackDeck, discarded;
 
     private BlackJackDealer blackJackDealer;
+
+    public BlackJackPlayer getPlayer() {
+        return blackJackPlayer;
+    }
+
     private BlackJackPlayer blackJackPlayer;
     private int wins, losses, pushes;
 
