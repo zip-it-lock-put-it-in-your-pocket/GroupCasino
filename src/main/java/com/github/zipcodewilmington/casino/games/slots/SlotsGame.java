@@ -60,15 +60,18 @@ public class SlotsGame  {
             String ret = scan.nextLine().toLowerCase();
             if(ret.equals("yes")||ret.equals("y"))
             {
-                slotsPlayer.setWallet(slotsPlayer.CurrentBet);
-                retr.setCasinoBalance(retr.getCasinoBalance()+slotsPlayer.getWallet());
+                slotsPlayer.setWallet(slotsPlayer.CurrentBet+slotsPlayer.getWallet());
+                int f = slotsPlayer.CurrentBet;
+                retr.setCasinoBalance(retr.getCasinoBalance()+f);
+
                 slotsPlayer.resetBet();
                 run();
             }
            else if(ret.equals("no")||ret.equals("n"))
             {
-                slotsPlayer.setWallet(slotsPlayer.CurrentBet);
-                retr.setCasinoBalance(retr.getCasinoBalance()+ slotsPlayer.getWallet());
+
+                int f = slotsPlayer.CurrentBet;
+                retr.setCasinoBalance(retr.getCasinoBalance()+f);
             }
         }
 
