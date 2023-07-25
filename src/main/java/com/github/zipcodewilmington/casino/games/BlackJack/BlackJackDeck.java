@@ -2,73 +2,108 @@ package com.github.zipcodewilmington.casino.games.BlackJack;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
-import com.github.zipcodewilmington.casino.games.Card;
-
+/**
+ * A deck of cards
+ */
 public class BlackJackDeck {
+
+    //An arraylist to hold the deck of Cards
     private ArrayList<BlackJackCard> deck;
 
-    public BlackJackDeck() {
 
+    /**
+     * Create an empty deck of cards
+     */
+    public BlackJackDeck(){
         deck = new ArrayList<BlackJackCard>();
     }
 
-    public ArrayList<BlackJackCard> getBlackJackCards() {
-        return deck;
+    /**
+     * Copy Constructor
+     * @param c deck being copied
+     */
+    public BlackJackDeck(BlackJackDeck c){
+        Collections.copy(this.deck, c.getCards());
     }
 
-    public BlackJackDeck(BlackJackDeck bjd){
-        Collections.copy(this.deck, bjd.getBlackJackCards());
+    /**
+     * Create a standard deck of cards
+     * @param makeDeck makes a standard deck of cards if true
+     */
+    public BlackJackDeck(boolean makeDeck){
+        deck = new ArrayList<BlackJackCard>();
+        if(makeDeck){
+            //Go through all the suits
+            for(BlackJackSuit blackJackSuit : BlackJackSuit.values()){
+                //Go through all the ranks
+                for(BlackJackRankEnum blackJackRankEnum : BlackJackRankEnum.values()){
+                    //add a new card containing each iterations suit and rank
+                    deck.add(new BlackJackCard(blackJackSuit, blackJackRankEnum));
+                }
+            }
+        }
     }
 
-    public void addBlackJackCard(BlackJackCard blackjackcard) {
-        deck.add(blackjackcard);  //this adds a single card to the deck
+    /**
+     *
+     * @param blackJackCard The card being added to this deck
+     */
+    public void addCard(BlackJackCard blackJackCard){
+        deck.add(blackJackCard);
     }
-    public void addBlackJackCards(ArrayList<BlackJackCard> blackJackCards){
+
+    /**
+     *
+     * @param blackJackCards an arraylist of cards to be added to this deck
+     */
+    public void addCards(ArrayList<BlackJackCard> blackJackCards){
         deck.addAll(blackJackCards);
     }
 
-    public String toString() {
-        //the string will return every single card in the deck
+    /**
+     *
+     * @return Every value of the deck as a String with line separators
+     */
+    public String toString(){
+        //A string to hold everything we're going to return
         String output = "";
-        for (BlackJackCard card : deck) {
-            output += card;
+
+        for(BlackJackCard blackJackCard : deck){
+            output += blackJackCard;
             output += "\n";
         }
         return output;
     }
 
-    public BlackJackDeck(boolean makeBlackJackDeck) {
-        deck = new ArrayList<BlackJackCard>();
-        if (makeBlackJackDeck) {
-            for (Suit suit : Suit.values()) {
-                for (Rank rank : Rank.values()) {
-                    deck.add(new BlackJackCard(suit, rank));
-                }
-
-            }
-        }
+    /**
+     * Shuffle the deck of Cards at random
+     */
+    public void shuffle(){
+        Collections.shuffle(deck, new Random());
     }
 
+    /**
+     *
+     * @return The card taken from the deck
+     */
+    public BlackJackCard takeCard(){
 
-    public void shuffle() {
-        ArrayList<BlackJackCard> shuffle = new ArrayList<BlackJackCard>();
-        while (deck.size() > 0) {
-
-            int cardToPull = (int) (Math.random() * (deck.size() - 1));
-            shuffle.add(deck.get(cardToPull));
-            deck.remove(cardToPull);
-        }
-        deck = shuffle;
+            //Take a copy of the first card from the deck
+            BlackJackCard blackJackCardToTake = new BlackJackCard(deck.get(0));
+            //Remove the card from the deck
+            deck.remove(0);
+            //Give the card back
+            return blackJackCardToTake;
 
     }
-    public BlackJackCard takeBlackJackCard() {
-        BlackJackCard cardToTake = new  BlackJackCard(deck.get(0));
-        deck.remove(0);
-        return cardToTake;
-    }
 
-    public boolean hasBlackJackCards() {
+    /**
+     *
+     * @return true if the deck still has cards left
+     */
+    public boolean hasCards(){
         if (deck.size()>0){
             return true;
         }
@@ -77,13 +112,41 @@ public class BlackJackDeck {
         }
     }
 
-    public void reloadBlackJackDeckFromDiscard(BlackJackDeck discard) {
-        this.addBlackJackCards(discard.getBlackJackCards());
+    /**
+     *
+     * @return The number of cards left in the deck
+     */
+    public int cardsLeft(){
+        return deck.size();
+    }
+
+    /**
+     *
+     * @return the arraylist containing all the cards in this deck
+     */
+    public ArrayList<BlackJackCard> getCards() {
+        return deck;
+    }
+
+    /**
+     * Empties out this Deck
+     */
+    public void emptyDeck(){
+        deck.clear();
+    }
+
+
+    /**
+     * Take all the cards from a discarded deck and place them in this deck, shuffled.
+     * Clear the old deck
+     * @param discard - the deck we're getting the cards from
+     */
+    public void reloadDeckFromDiscard(BlackJackDeck discard){
+        this.addCards(discard.getCards());
         this.shuffle();
-        discard.emptyBlackJackDeck();
+        discard.emptyDeck();
         System.out.println("Ran out of cards, creating new deck from discard pile & shuffling deck.");
     }
-    public int blackJackCardsLeft(){return deck.size();}
 
-    public void emptyBlackJackDeck(){deck.clear();}
+
 }
