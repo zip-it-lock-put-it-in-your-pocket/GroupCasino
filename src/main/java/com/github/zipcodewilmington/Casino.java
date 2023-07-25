@@ -52,17 +52,13 @@ public class Casino implements Runnable {
                         RideTheBusGame ride = new RideTheBusGame(casinoAccount);
                         ride.start();
 
-                    }
-                    else if (gameSelectionInput.equals("WAR")) {
-                        CasinoWar.playCasinoWar();
+                    } else if (gameSelectionInput.equals("WAR")) {
+                       // CasinoWar.playCasinoWar();
 
-                    }
-                    else if (gameSelectionInput.equals("STREETCRAPS"))
-                    {
-                        StreetCraps craps = new StreetCraps();
+                    } else if (gameSelectionInput.equals("STREETCRAPS")) {
+                        StreetCraps craps = new StreetCraps(casinoAccount);
                         craps.run();
-                    }
-                    else {
+                    } else {
                         // TODO - implement better exception handling
                         String errorMessage = "[ %s ] is an invalid game selection";
                         throw new RuntimeException(String.format(errorMessage, gameSelectionInput));
@@ -101,8 +97,9 @@ public class Casino implements Runnable {
     }
 
     private void play(Object gameObject, Object playerObject) throws InterruptedException {
-        GameInterface game = (GameInterface)gameObject;
-        PlayerInterface player = (PlayerInterface)playerObject;
+        GameInterface game = (GameInterface) gameObject;
+        PlayerInterface player = (PlayerInterface) playerObject;
         game.add(player);
         game.run();
     }
+}

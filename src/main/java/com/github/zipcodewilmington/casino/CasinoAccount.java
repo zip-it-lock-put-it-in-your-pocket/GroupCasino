@@ -39,10 +39,18 @@ public class CasinoAccount {
     public double getCasinoBalance() {
         return casinoBalance;
     }
+    public void addCasinoBalance(double add){
+        casinoBalance+=add;
+    }
+    public void subCasinoBalance(double sub){
+        casinoBalance-=sub;
+    }
+
 
     public void setCasinoBalance(double casinoBalance) {
         this.casinoBalance = casinoBalance;
     }
+
 
     public CasinoAccount(String accountName, String accountPassword, double casinoBalance) {
         this.accountName = accountName;
