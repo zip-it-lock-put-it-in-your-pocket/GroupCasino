@@ -45,7 +45,6 @@ public class StreetCraps {
             }
             else if (checkLoss(currentRoll)){
                 gameover=true;
-                streetCrapsPlayer.subCasinoBalance(wager);
             }
             else{
                 point = currentRoll;
@@ -76,7 +75,7 @@ public class StreetCraps {
             return true;
         } else if (rolledAgainRoll==7) {
             System.out.println("you lost");
-            streetCrapsPlayer.subCasinoBalance(wager);
+
             return true;
         }
         return false;
