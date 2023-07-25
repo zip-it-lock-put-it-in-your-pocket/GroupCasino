@@ -36,6 +36,7 @@ public class Casino implements Runnable {
                 boolean isValidLogin = casinoAccount != null;
 
                 if (isValidLogin) {
+
                     String gameSelectionInput = getGameSelectionInput().toUpperCase();
                     if (gameSelectionInput.equals("SLOTS")) {
                         SlotsGame slots = new SlotsGame(casinoAccount);

@@ -1,5 +1,6 @@
 package com.github.zipcodewilmington.casino.games.RideTheBus;
 
+import com.github.zipcodewilmington.Casino;
 import com.github.zipcodewilmington.casino.CasinoAccount;
 import com.github.zipcodewilmington.casino.GameInterface;
 import com.github.zipcodewilmington.casino.PlayerInterface;
@@ -14,8 +15,10 @@ public class RideTheBusGame implements GameInterface {
     public RideTheBusPlayer getRider() {
         return rider;
     }
-    CasinoAccount f;
+    private IOConsole colorConsoleRed = new IOConsole(AnsiColor.RED);
+    IOConsole colorConsoleGreen = new IOConsole(AnsiColor.GREEN);
     RideTheBusPlayer rider;
+    CasinoAccount retr;
     Deck deckobj = new Deck();
     Card[] table = new Card[4];
     int index0;
@@ -23,16 +26,20 @@ public class RideTheBusGame implements GameInterface {
 
 public RideTheBusGame(CasinoAccount person)
 {
-    f = person;
+    retr = person;
 }
 
 
     public void hop() {
         index0 = index0 + 1;
+
+
+
     }
 
     public void back() {
         index0 = index0 - 1;
+
     }
 
     public void deal() {
@@ -59,7 +66,7 @@ public RideTheBusGame(CasinoAccount person)
 
     public void start() {
 
-        rider = new RideTheBusPlayer(f);
+        rider = new RideTheBusPlayer(retr);
         WelcomeMessage();
         while (!checkbet(getBet()))
         {}
@@ -81,15 +88,15 @@ public RideTheBusGame(CasinoAccount person)
         else
         {
           System.out.println("Congratulations on making it to the end of the bus!");
-          int winnings = rider.getCurrentBet()*2;
+          int winnings = (int) (rider.getCurrentBet()*2);
           System.out.println("Your returns are: " + winnings);
           rider.setWallet(rider.getWallet()+winnings);
+          retr.setCasinoBalance(rider.getWallet());
         }
     }
 
     public String guessHiLow() {
         System.out.println("Do you believe the next card turned will be higher or lower?");
-
         String ret = scan.nextLine().toLowerCase();
         if(ret.equals("higher") || ret.equals("lower"))
         {
@@ -124,6 +131,7 @@ public RideTheBusGame(CasinoAccount person)
         }
         rider.setCurrentBet(bet);
         rider.setWallet(rider.wallet-bet);
+        retr.setCasinoBalance(retr.getCasinoBalance()-bet);
         System.out.println("You bet has been set.");
         return true;
     }
@@ -148,20 +156,20 @@ public RideTheBusGame(CasinoAccount person)
     public void react(boolean logic) {
         if (logic == true)
         {
-            System.out.println("Your guess was right, moving up!");
+            colorConsoleGreen.println("Your guess was right, moving up!");
             hop();
         }
         else if (logic == false)
         {
             if (getIndex0() != 0)
             {
-                System.out.println("Your guess was wrong, moving back!");
+                colorConsoleRed.println("Your guess was wrong, moving back!");
                 System.out.println("Your bet has been decreased by 15%");
                 rider.setCurrentBet((int) (rider.getCurrentBet()-rider.getCurrentBet()*.15));
                 back();
             }
             else if( getIndex0()==0) {
-                System.out.println("Your guess was wrong but you're still at spot one.");
+                colorConsoleRed.println("Your guess was wrong but you're still at spot one.");
                 System.out.println("Your bet has been decreased by 15%");
                 rider.setCurrentBet((int) (rider.getCurrentBet() - rider.getCurrentBet() * .15));
             }
@@ -198,7 +206,6 @@ public RideTheBusGame(CasinoAccount person)
     public void gameflow() {
         if (index0 == 0 || index0 == 1) {
             reveal();
-
             react(checkHiLow(guessHiLow()));
         } else if (index0 == 2)
         {
@@ -225,7 +232,6 @@ public RideTheBusGame(CasinoAccount person)
 
     public String guessSuit() {
         System.out.println("Please input the suit of the next card flipped over.");
-
         String ret = scan.nextLine().toLowerCase();
         if(ret.equals("spades")||ret.equals("clubs")||ret.equals("diamonds")||ret.equals("hearts"))
         {
@@ -240,7 +246,6 @@ public RideTheBusGame(CasinoAccount person)
     }
 
     public void reveal() {
-
         System.out.println( "The current value of the card you are guessing is " + getValue());
     }
 
@@ -254,6 +259,7 @@ public RideTheBusGame(CasinoAccount person)
     }
     public void status()
     {
+        if(index0<=3)
     System.out.println("You are currently at card position " + (index0+1) + " with a bet balance of " + rider.getCurrentBet());
     }
 
