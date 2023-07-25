@@ -54,7 +54,8 @@ public class Casino implements Runnable {
 
                     }
                     else if (gameSelectionInput.equals("WAR")) {
-                        CasinoWar.playCasinoWar();
+                        CasinoWar casinoWar = new CasinoWar();
+                        casinoWar.run();
 
                     }
                     else if (gameSelectionInput.equals("STREETCRAPS"))
@@ -105,4 +106,4 @@ public class Casino implements Runnable {
         PlayerInterface player = (PlayerInterface)playerObject;
         game.add(player);
         game.run();
-    }
+    }}
