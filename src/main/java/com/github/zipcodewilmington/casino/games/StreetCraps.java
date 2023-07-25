@@ -1,9 +1,14 @@
 package com.github.zipcodewilmington.casino.games;
+import com.github.zipcodewilmington.casino.CasinoAccount;
 import com.github.zipcodewilmington.casino.games.DiceRoll;
 
 import java.util.Scanner;
 
 public class StreetCraps {
+    static CasinoAccount streetCrapsPlayer;
+    public StreetCraps (CasinoAccount person){
+        streetCrapsPlayer=person;
+    }
 
     static int point = 0;
     double sideBet = 0;
@@ -24,16 +29,22 @@ public class StreetCraps {
 
     public static void main(String[] args) {
         int currentRoll;
+        int wager;
+
 
         while (!win && !gameover && !rollagain) {
-            System.out.println("press any key to roll dice:");
-            in.nextLine();
+            System.out.println("Choose amount to wager");
+            wager=in.nextInt();
+
             currentRoll = rollDice();
             if(checkwin(currentRoll)){
                 win=true;
+                wager =wager*2;
+                streetCrapsPlayer.addCasinoBalance(wager);
             }
             else if (checkLoss(currentRoll)){
                 gameover=true;
+
             }
             else{
                 point = currentRoll;
