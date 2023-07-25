@@ -1,9 +1,14 @@
 package com.github.zipcodewilmington.casino.games;
+import com.github.zipcodewilmington.casino.CasinoAccount;
 import com.github.zipcodewilmington.casino.games.DiceRoll;
 
 import java.util.Scanner;
 
 public class StreetCraps {
+    static CasinoAccount streetCrapsPlayer;
+    public StreetCraps (CasinoAccount person){
+        streetCrapsPlayer=person;
+    }
 
     static int point = 0;
     double sideBet = 0;
@@ -17,23 +22,31 @@ public class StreetCraps {
 
     static boolean rollagain=false;
 
+    static int wager=0;
+
 
 
     static Scanner in=new Scanner(System.in);
 
 
-    public  void run() {
+    public void run() {
         int currentRoll;
 
+        System.out.println("Choose amount to wager");
+        wager=in.nextInt();
+
         while (!win && !gameover && !rollagain) {
-            System.out.println("press any key to roll dice:");
-            in.nextLine();
+
+
             currentRoll = rollDice();
             if(checkwin(currentRoll)){
                 win=true;
+                wager =wager*2;
+                streetCrapsPlayer.addCasinoBalance(wager);
             }
             else if (checkLoss(currentRoll)){
                 gameover=true;
+                streetCrapsPlayer.subCasinoBalance(wager);
             }
             else{
                 point = currentRoll;
@@ -45,6 +58,11 @@ public class StreetCraps {
 
 
         }
+        win = false;
+        gameover=false;
+        rollagain=false;
+        wager=0;
+
     }
 
     public static boolean rollAgain(){
@@ -54,9 +72,12 @@ public class StreetCraps {
         rolledAgainRoll=rollDice();
         if(rolledAgainRoll==point){
             System.out.println("you won");
+            wager =wager*2;
+            streetCrapsPlayer.addCasinoBalance(wager);
             return true;
         } else if (rolledAgainRoll==7) {
             System.out.println("you lost");
+            streetCrapsPlayer.subCasinoBalance(wager);
             return true;
         }
         return false;
@@ -78,7 +99,7 @@ public class StreetCraps {
             System.out.println("YOU WON");
             return true;
         }
-            return false;
+        return false;
     }
     public static boolean checkLoss(int currentRoll){
         if (currentRoll == losingNums[0] || currentRoll == losingNums[1] || currentRoll == losingNums[2]) {
